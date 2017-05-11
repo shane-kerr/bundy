@@ -1376,6 +1376,7 @@ def main():
     flags = fcntl.fcntl(wakeup_pipe[1], fcntl.F_GETFL)
     fcntl.fcntl(wakeup_pipe[1], fcntl.F_SETFL, flags | os.O_NONBLOCK)
     signal.set_wakeup_fd(wakeup_pipe[1])
+    fcntl.fcntl(wakeup_pipe[1], fcntl.F_SETFL, flags)
 
     # Set signal handlers for catching child termination, as well
     # as our own demise.
